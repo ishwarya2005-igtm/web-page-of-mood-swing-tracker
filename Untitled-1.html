@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Mood Tracker</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+body{
+    height:100vh;
+    background:
+        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+        url("https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d");
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* LOGIN PAGE */
+.login{
+    width:380px;
+    background:white;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 20px 40px rgba(0,0,0,0.4);
+    text-align:center;
+}
+
+.login h1{
+    margin-bottom:10px;
+}
+
+.login p{
+    color:#666;
+    margin-bottom:20px;
+}
+
+.login input{
+    width:100%;
+    padding:10px;
+    margin-bottom:15px;
+    border-radius:6px;
+    border:1px solid #ccc;
+}
+
+.login button{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    margin-bottom:10px;
+    font-size:14px;
+}
+
+.login-btn{
+    background:#667eea;
+    color:white;
+}
+
+.google-btn{
+    background:#db4437;
+    color:white;
+}
+
+.github-btn{
+    background:#24292e;
+    color:white;
+}
+
+.or{
+    margin:12px 0;
+    color:#aaa;
+    font-size:13px;
+}
+
+/* SUCCESS MESSAGE */
+.success{
+    display:none;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    margin-bottom:20px;
+    text-align:center;
+    color:green;
+    font-weight:bold;
+}
+
+/* MOOD PAGE */
+.mood{
+    display:none;
+    width:650px;
+    background:white;
+    padding:30px;
+    border-radius:14px;
+    text-align:center;
+    box-shadow:0 20px 40px rgba(0,0,0,0.4);
+}
+
+.mood h2{
+    margin-bottom:10px;
+}
+
+.mood p{
+    color:#666;
+    margin-bottom:25px;
+}
+
+.mood-box{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.mood-item{
+    font-size:30px;
+    padding:20px;
+    background:#f2f3ff;
+    border-radius:12px;
+    cursor:pointer;
+}
+
+.mood-item span{
+    display:block;
+    font-size:14px;
+    margin-top:6px;
+}
+
+.mood-item:hover{
+    background:#667eea;
+    color:white;
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOGIN SECTION -->
+<div id="loginSection">
+    <div class="login">
+        <h1>Mood Tracker</h1>
+        <p>Login to continue</p>
+
+        <input type="text" placeholder="Email">
+        <input type="password" placeholder="Password">
+
+        <button class="login-btn" onclick="login()">Login</button>
+
+        <div class="or">OR</div>
+
+        <button class="google-btn" onclick="login()">Login with Google</button>
+        <button class="github-btn" onclick="login()">Login with GitHub</button>
+    </div>
+</div>
+
+<!-- LOGIN SUCCESS -->
+<div class="success" id="successMsg">
+    ✅ Login Successful! Welcome to Mood Tracker
+</div>
+
+<!-- MOOD PAGE -->
+<div class="mood" id="moodPage">
+    <h2>How are you feeling today?</h2>
+    <p>Select your current mood</p>
+
+    <div class="mood-box">
+        <div class="mood-item" onclick="selectMood('Happy 😊')">😊<span>Happy</span></div>
+        <div class="mood-item" onclick="selectMood('Sad 😔')">😔<span>Sad</span></div>
+        <div class="mood-item" onclick="selectMood('Angry 😡')">😡<span>Angry</span></div>
+        <div class="mood-item" onclick="selectMood('Tired 😴')">😴<span>Tired</span></div>
+        <div class="mood-item" onclick="selectMood('Relaxed 😌')">😌<span>Relaxed</span></div>
+        <div class="mood-item" onclick="selectMood('Anxious 😰')">😰<span>Anxious</span></div>
+    </div>
+</div>
+
+<script>
+function login(){
+    document.getElementById("loginSection").style.display="none";
+    document.getElementById("successMsg").style.display="block";
+
+    setTimeout(()=>{
+        document.getElementById("successMsg").style.display="none";
+        document.getElementById("moodPage").style.display="block";
+    },1500);
+}
+
+function selectMood(mood){
+    alert("Mood selected successfully: " + mood);
+}
+</script>
+
+</body>
+</html>
